@@ -1,0 +1,17 @@
+{
+    "name": "daftpoint.domaindrivenmodeing",
+    "title": "DomainDrivenModelling",
+    "description": "Extension to provide Domain Driven Elements and Stereotypes.",
+    "homepage": "https://github.com/DaftPoint/StarUML.DDD",
+    "version": "0.1.0",
+    "keywords": ["DDD", "Domain-Driven", "Modeling"],
+    "author": {
+        "name": "Michael Seiler",
+        "email": "mseiler@repsta.com",
+        "url": "https://github.com/Daftpoint"
+    },
+    "license": "MIT",
+    "engines": {
+        "staruml": ">=2.0.0"
+    }
+}
