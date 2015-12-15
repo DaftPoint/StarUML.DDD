@@ -1,18 +1,17 @@
 define(function (require, exports, module) {
 	"use strict";
 
-    var PreferenceManager = app.getModule("core/PreferenceManager");
-    var UML               = app.getModule("uml/UML");
-    var Factory           = app.getModule("engine/Factory");
-    var DiagramManager    = app.getModule("diagrams/DiagramManager");
+    app.getModule("core/PreferenceManager");
+    app.getModule("engine/Factory");
+    app.getModule("diagrams/DiagramManager");
 
+    var UML               = app.getModule("uml/UML");
     var Graphics          = require("Graphics");
 
 	function UMLDomainDrivenElement() {
         type.UMLClass.apply(this, arguments);
-
-        //this.stereotype = 'View';
     }
+	
     // inherits from UMLClassifier
     UMLDomainDrivenElement.prototype = Object.create(type.UMLClass.prototype);
     UMLDomainDrivenElement.prototype.constructor = UMLDomainDrivenElement;
@@ -20,7 +19,7 @@ define(function (require, exports, module) {
     function UMLDomainDrivenElementView() {
         type.UMLClassView.apply(this, arguments);
         this.stereotypeDisplay = UML.SD_DECORATION_LABEL;
-        this.stereoTypeLabelText = "DomainDrivenElement"
+        this.stereoTypeLabelText = "DomainDrivenElement";
         this.iconName = null;
         this.documentationInfoIconCreated = false;
         this.documentationInfoIcon = null;
@@ -51,8 +50,6 @@ define(function (require, exports, module) {
                 x2        : this.left + 16,
                 y2        : this.top + 12
             };
-            var diagram = DiagramManager.getCurrentDiagram();
-            var parent  = diagram._parent;
             this.documentationInfoIcon = new type.UMLRequirementView();
             this.documentationInfoIcon.size();
             this.documentationInfoIcon.left = options.x1;
@@ -100,7 +97,7 @@ define(function (require, exports, module) {
                 break;
             }
     	type.UMLClassView.prototype.update.call(this, canvas);
-    }
+    };
 
     //# Backbone
     type.UMLDomainDrivenElement            = UMLDomainDrivenElement;

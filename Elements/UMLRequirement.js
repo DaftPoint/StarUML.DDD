@@ -1,10 +1,9 @@
 define(function (require, exports, module) {
 	"use strict";
 
-	var UML 		=	app.getModule("uml/UML");
+	app.getModule("uml/UML");
 
-    var Graphics    = require("Graphics");
-
+    require("Graphics");
 
     function UMLRequirementView() {
         type.UMLNoteView.apply(this, arguments);
@@ -34,7 +33,7 @@ define(function (require, exports, module) {
 
     function drawImage(imageName, canvas) {        
         var imagePath = '../style/icons/' + imageName + '.svg';
-        imagePath = require.toUrl(imagePath)
+        imagePath = require.toUrl(imagePath);
         var image = new Image();
         image.src = imagePath;
         var sizeWidth = (this.width);

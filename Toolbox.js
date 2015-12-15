@@ -32,13 +32,10 @@ define(function (require, exports, module) {
             try {
                 var diagram             = editor.diagram,
                     parent              = diagram._parent,
-                    model               = null,
                     view                = null,
                     tailView            = diagram.getViewAt(editor.canvas, x1, y1, false),
                     headView            = diagram.getViewAt(editor.canvas, x2, y2, false),
-                    tailModel           = tailView ? tailView.model : null,
-                    headModel           = headView ? headView.model : null,
-                    viewTypes;
+                    tailModel           = tailView ? tailView.model : null;
 
                 var options = {
                         x1        : x1,

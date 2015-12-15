@@ -3,21 +3,21 @@ define(function (require, exports, module) {
     
     var Factory 			    = app.getModule("engine/Factory");
     var AppInit                 = app.getModule("utils/AppInit");
-
-    var UMLDataEntity           = require("Elements/UMLDataEntity");
-    var UMLView                 = require("Elements/UMLView");
-    var UMLService              = require("Elements/UMLService");
-    var UMLMaskenfluss          = require("Elements/UMLMaskenfluss");
-    var UMLValueObject          = require("Elements/UMLValueObject");
-    var UMLRequirement          = require("Elements/UMLRequirement");
-
-    var DomainDrivenMetaModel   = require("MetaModel");
-    var DomainDrivenToolbox     = require("Toolbox");
-
     var Helper                  = app.getModule("utils/Helper");
-    var FileUtils               = app.getModule("file/FileUtils");
     var Extensionutils          = app.getModule("utils/ExtensionUtils");
 
+    require("Elements/UMLDataEntity");
+    require("Elements/UMLView");
+    require("Elements/UMLService");
+    require("Elements/UMLMaskenfluss");
+    require("Elements/UMLValueObject");
+    require("Elements/UMLRequirement");
+
+    app.getModule("file/FileUtils");
+    
+    var DomainDrivenMetaModel   = require("MetaModel");
+    var DomainDrivenToolbox     = require("Toolbox");
+    
     function modelElementLinkPrecondition(options) {
         Helper.assert(
             (options.tailModel instanceof type.UMLView || options.tailModel instanceof type.UMLOperation) 

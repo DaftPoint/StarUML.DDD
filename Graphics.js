@@ -3,7 +3,7 @@ define(function (require, exports, module) {
 	
     function drawImage(imageName, canvas) {        
         var imagePath = './style/icons/' + imageName + '.svg';
-        imagePath = require.toUrl(imagePath)
+        imagePath = require.toUrl(imagePath);
         var image = new Image();
         image.src = imagePath;
         var pixel = (this.font.size * 96 / 72) + 5;
@@ -14,7 +14,7 @@ define(function (require, exports, module) {
 
     function drawIcon(imageName, canvas) {
         var imagePath = './style/icons/' + imageName + '.svg';
-        imagePath = require.toUrl(imagePath)
+        imagePath = require.toUrl(imagePath);
         var image = new Image();
         image.src = imagePath;
         var sizeWidth = 16;
@@ -24,7 +24,7 @@ define(function (require, exports, module) {
 
     function getImage(imageName) {
         var imagePath = './style/icons/' + imageName + '.svg';
-        imagePath = require.toUrl(imagePath)
+        imagePath = require.toUrl(imagePath);
         var image = new Image();
         image.src = imagePath;
         return image;
