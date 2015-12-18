@@ -1,7 +1,7 @@
 define(function (require, exports, module) {
 	"use strict";
 
-	app.getModule("uml/UML");
+	var UML = app.getModule("uml/UML");
 
     require("Graphics");
 

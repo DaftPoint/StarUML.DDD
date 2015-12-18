@@ -1,7 +1,7 @@
 define(function (require, exports, module) {
 	"use strict";
 
-    app.getModule("core/PreferenceManager");
+	var PreferenceManager = app.getModule("core/PreferenceManager");
     require("Elements/UMLDomainDrivenElement");
 	
 	function UMLDataEntity() {
