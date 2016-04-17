@@ -22,7 +22,8 @@ define(function (require, exports, module) {
         Helper.assert(
             (options.tailModel instanceof type.UMLView || options.tailModel instanceof type.UMLOperation) 
             && (options.headModel instanceof type.UMLView  || (options.headModel instanceof type.Hyperlink 
-                                                                && options.headModel.reference instanceof type.UMLClassDiagram)),
+                                                                && (options.headModel.reference instanceof type.UMLClassDiagram
+                                                                || options.headModel.reference instanceof type.UMLActivityDiagram))),
             Mustache.render(Factory.ERR_INVALID_LINK, options.modelType)
         );
     }

@@ -21,6 +21,7 @@ define(function (require, exports, module) {
         this.stereotypeDisplay = UML.SD_DECORATION_LABEL;
         this.stereoTypeLabelText = "DomainDrivenElement";
         this.iconName = null;
+        this.base64Image = null;
         this.documentationInfoIconCreated = false;
         this.documentationInfoIcon = null;
     }
@@ -34,13 +35,13 @@ define(function (require, exports, module) {
     UMLDomainDrivenElementView.prototype.drawObject = function (canvas) {
        type.UMLClassView.prototype.drawObject.call(this, canvas);
         if(this.iconName != null && (this.stereotypeDisplay == UML.SD_DECORATION || this.stereotypeDisplay == UML.SD_DECORATION_LABEL)) {
-        	Graphics.drawIcon.call(this, this.iconName, canvas);
+        	Graphics.drawIcon.call(this, this.iconName, canvas, this.base64Image);
         }
     };
 
     UMLDomainDrivenElementView.prototype.drawIcon = function (canvas, rect) {
         if(this.iconName != null && (this.stereotypeDisplay == UML.SD_ICON || this.stereotypeDisplay == UML.SD_ICON_LABEL)) {
-        	Graphics.drawImage.call(this, this.iconName, canvas);
+        	Graphics.drawImage.call(this, this.iconName, canvas, this.base64Image);
         }
         if(this.model.documentation != null && this.model.documentation != "" && this.documentationInfoIconCreated == false) {
             this.documentationInfoIconCreated = true;

@@ -22,7 +22,8 @@ define(function (require, exports, module) {
 
     UMLMaskenflussView.prototype.canConnectTo = function (view, isTail) {
         return (view.model instanceof type.UMLModelElement) ||
-               (view.model instanceof type.Hyperlink);
+               (view.model instanceof type.Hyperlink) ||
+               (view.model instanceof type.UMLOperationView);
     };
 
     //# Backbone
