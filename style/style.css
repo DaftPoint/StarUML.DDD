@@ -1,0 +1,57 @@
+
+.icon-UMLClassDiagram {
+    //background-image: url('icons/view.svg') !important;
+    background-repeat: no-repeat;
+    background-position: -112px -96px;
+    width: 16px;
+    height: 16px;
+    background-clip: content-box
+}
+.icon-UMLView {
+    background-image: url('./icons/view.svg') !important;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-clip: content-box
+}
+.icon-UMLService {
+    background-image: url('./icons/service.svg') !important;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-clip: content-box
+}
+.icon-UMLDataEntity {
+    background-image: url('./icons/entity.svg') !important;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-clip: content-box
+}
+.icon-UMLMaskenfluss {
+    background-image: url('./icons/maskenfluss.svg') !important;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    width: 16px;
+    height: 16px;
+    background-clip: content-box
+}
+.icon-UMLValueObject {
+    background-image: url('./icons/valueObject.svg') !important;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-clip: content-box
+}
+.icon-UMLRequirement {
+    background-image: url('./icons/requirement.svg') !important;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-clip: content-box
+}
