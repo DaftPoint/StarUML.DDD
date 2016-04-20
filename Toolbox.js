@@ -42,8 +42,8 @@ define(function (require, exports, module) {
                         y1        : y1,
                         x2        : x2,
                         y2        : y2,
-                        tailView  : diagram.getViewAt(editor.canvas, x1, y1, true),
-                        headView  : diagram.getViewAt(editor.canvas, x2, y2, true),
+                        tailView  : tailView,//diagram.getViewAt(editor.canvas, x1, y1, true),
+                        headView  : headView,//diagram.getViewAt(editor.canvas, x2, y2, true),
                         tailModel : tailView ? tailView.model : null,
                         headModel : headView ? headView.model : null
                     };
@@ -63,6 +63,7 @@ define(function (require, exports, module) {
                     view = Factory.createModelAndView("UMLValueObject", parent, diagram, options);
                     break;
                 case TX_MASKENFLUSS:
+                    options.y1 = tailView.top;
                     view = Factory.createModelAndView("UMLMaskenfluss", tailModel, diagram, options);
                     view.model.stereotype = "Maskenfluss"; 
                     break;
