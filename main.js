@@ -23,7 +23,8 @@ define(function (require, exports, module) {
             (options.tailModel instanceof type.UMLView || options.tailModel instanceof type.UMLOperation) 
             && (options.headModel instanceof type.UMLView  || (options.headModel instanceof type.Hyperlink 
                                                                 && (options.headModel.reference instanceof type.UMLClassDiagram
-                                                                || options.headModel.reference instanceof type.UMLActivityDiagram))),
+                                                                || options.headModel.reference instanceof type.UMLActivityDiagram)))
+            || ((options.tailModel instanceof type.Hyperlink && options.tailModel.reference instanceof type.UMLActivityDiagram) || options.headModel.reference instanceof type.UMLViewView),
             Mustache.render(Factory.ERR_INVALID_LINK, options.modelType)
         );
     }
