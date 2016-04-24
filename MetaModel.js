@@ -73,6 +73,32 @@ define(function (require, exports, module) {
             "UMLRequirementView": {
                 "kind": "class",
                 "super": "UMLNoteView"
+            },
+            "UMLStep": {
+                "kind": "class",
+                "super": "UMLAction",
+                "attributes": [
+                    //{ "name": "isActive",   "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+                ],
+                "view": "UMLStepView",
+                "ordering": 9005
+            },
+            "UMLStepView": {
+                "kind": "class",
+                "super": "UMLActionView"
+            },
+            "UMLExceptionFlow": {
+                "kind": "class",
+                "super": "UMLControlFlow",
+                "attributes": [
+                    //{ "name": "mapping", "kind": "prim", "type": "String", "visible": true }
+                ],
+                "view": "UMLExceptionFlowView",
+                "ordering": 9006
+            },
+            "UMLExceptionFlowView": {
+                "kind": "class",
+                "super": "UMLControlFlowView"
             }/*,,
             "UMLClassDiagram": {
                 "kind": "class",

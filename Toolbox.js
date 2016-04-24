@@ -8,13 +8,17 @@ define(function (require, exports, module) {
     var Toast       = app.getModule("ui/Toast");
 
 	var TXG_CLASS_DDD      = 'txg-class_ddd';
+    var TXG_ACTIVITY_DDD      = 'txg-activity_ddd';
     var // Classes (Basic)
         TX_ENTITY          = 'tx-entity',
         TX_VIEW            = 'tx-view',
         TX_SERVICE         = 'tx-service',
         TX_VALUE_OBJECT    = 'tx-value-object',
         TX_MASKENFLUSS     = 'tx-maskenfluss',
-        TX_REQUIREMENT     = 'tx-requirement';
+        TX_REQUIREMENT     = 'tx-requirement',
+
+        TX_STEP          = 'tx-step',
+        TX_EXCEPTION_FLOW          = 'tx-exception-flow';
 
 	function setupToolbox() {
         // Classes (Basic)
@@ -26,6 +30,12 @@ define(function (require, exports, module) {
         Toolbox.addItem(TX_VALUE_OBJECT,    TXG_CLASS_DDD, 'Value Object',  'icon-UMLValueObject',          'rect');
         Toolbox.addItem(TX_MASKENFLUSS,     TXG_CLASS_DDD, 'Maskenfluss',   'icon-UMLMaskenfluss',          'line');
         Toolbox.addItem(TX_REQUIREMENT,     TXG_CLASS_DDD, 'Requirement',   'icon-UMLRequirement',          'rect');
+
+
+        Toolbox.addGroup(TXG_ACTIVITY_DDD, 'Activity (DDD)', [type.UMLActivityDiagram]);
+
+        Toolbox.addItem(TX_STEP,          TXG_ACTIVITY_DDD, 'UMLStep',        'icon-UMLStep',           'rect');
+        Toolbox.addItem(TX_EXCEPTION_FLOW,     TXG_ACTIVITY_DDD, 'UMLExceptionFlow',   'icon-UMLExceptionFlow',          'line');
 
         // Event Handling
         $(Toolbox).on('elementCreated', function (event, id, editor, x1, y1, x2, y2) {
@@ -71,6 +81,14 @@ define(function (require, exports, module) {
                     if ((options.x2 - options.x1) < 5) { options.x2 = options.x1 + 70; }
                     if ((options.y2 - options.y1) < 5) { options.y2 = options.y1 + 40; }
                     view = Factory.createModelAndView("UMLRequirement", parent, diagram, options);
+                    break;
+                case TX_STEP:
+                    view = Factory.createModelAndView("UMLStep", parent, diagram, options);
+                    break;
+                case TX_EXCEPTION_FLOW:
+                    options.y1 = tailView.top;
+                    view = Factory.createModelAndView("UMLExceptionFlow", tailModel, diagram, options);
+                    view.model.stereotype = "Exception";
                     break;
                 }
 

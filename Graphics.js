@@ -24,6 +24,27 @@ define(function (require, exports, module) {
         canvas.context.drawImage(image, this.left + this.width - 16 - 5, this.top + 5, sizeWidth, sizeHeight);
     }
 
+    function drawErrorIcon(imageName, canvas, base64) {
+        var image = new Image();
+        image.src = base64;
+        var sizeWidth = 16;
+        var sizeHeight= 16;
+
+        var x = this.errorIconLeft;
+        var y = this.errorIconTop;
+        if(this.points.getPoint(0).x > this.points.getPoint(1).x) {
+            x = x - (sizeWidth/2);
+            y = y - (sizeHeight/2);
+        } else {
+            y = y - (sizeHeight/2);
+            x = x - (sizeWidth/2);
+        }
+        /*if(this.points.getPoint(0).y > this.points.getPoint(1).y) {
+            y = y - (sizeHeight/2);
+        }*/
+        canvas.context.drawImage(image, x, y, sizeWidth, sizeHeight);
+    }
+
     function getImage(imageName) {
         /*var imagePath = './style/icons/' + imageName + '.svg';
         imagePath = require.toUrl(imagePath);
@@ -35,5 +56,6 @@ define(function (require, exports, module) {
     //# Backbone
     exports.drawImage = drawImage;
     exports.drawIcon  = drawIcon;
+    exports.drawErrorIcon  = drawErrorIcon;
     exports.getImage  = getImage;
 });

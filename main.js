@@ -12,6 +12,8 @@ define(function (require, exports, module) {
     require("Elements/UMLMaskenfluss");
     require("Elements/UMLValueObject");
     require("Elements/UMLRequirement");
+    require("Elements/activity/UMLStep");
+    require("Elements/activity/UMLException");
 
     app.getModule("file/FileUtils");
     
@@ -44,6 +46,10 @@ define(function (require, exports, module) {
         Factory.registerModelAndViewFn("UMLValueObject",   Factory.defaultModelAndViewFn);
         Factory.registerModelAndViewFn("UMLMaskenfluss",   Factory.defaultDirectedRelationshipFn, { precondition: modelElementLinkPrecondition } );
         Factory.registerModelAndViewFn("UMLRequirement",      Factory.defaultViewOnlyFn, { viewType: "UMLRequirementView" });
+
+        Factory.registerModelFn("UMLStep", Factory.defaultModelFn);
+        Factory.registerModelAndViewFn("UMLStep",   Factory.defaultModelAndViewFn);
+        Factory.registerModelAndViewFn("UMLExceptionFlow",   Factory.defaultDirectedRelationshipFn, null );
 
         //Factory.registerDiagramFn("UMLDomainDrivenClassDiagram",              structuralDiagramFn);
         //Factory.registerViewOfFn("UMLDomainDrivenClassDiagram",              viewForGeneralDiagramFn);
