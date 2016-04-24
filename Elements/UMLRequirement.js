@@ -34,8 +34,8 @@ define(function (require, exports, module) {
 
     function drawImage(imageName, canvas, base64Image) {
         /*var imagePath = '../style/icons/' + imageName + '.svg';
-        imagePath = require.toUrl(imagePath);
-        var image = new Image();*/
+        imagePath = require.toUrl(imagePath);*/
+        var image = new Image();
         image.src = base64Image;
         var sizeWidth = (this.width);
         var sizeHeight= (this.height);
