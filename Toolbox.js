@@ -20,6 +20,9 @@ define(function (require, exports, module) {
         TX_STEP          = 'tx-step',
         TX_EXCEPTION_FLOW          = 'tx-exception-flow';
 
+
+        var TX_INFORMATION     = 'tx-information';
+
 	function setupToolbox() {
         // Classes (Basic)
         Toolbox.addGroup(TXG_CLASS_DDD, 'Classes (DDD)', [type.UMLClassDiagram, type.UMLCompositeStructureDiagram]);
@@ -31,11 +34,15 @@ define(function (require, exports, module) {
         Toolbox.addItem(TX_MASKENFLUSS,     TXG_CLASS_DDD, 'Maskenfluss',   'icon-UMLMaskenfluss',          'line');
         Toolbox.addItem(TX_REQUIREMENT,     TXG_CLASS_DDD, 'Requirement',   'icon-UMLRequirement',          'rect');
 
+        Toolbox.addItem(TX_INFORMATION,     TXG_CLASS_DDD, 'Information',   'icon-UMLRequirement',          'rect');
+
 
         Toolbox.addGroup(TXG_ACTIVITY_DDD, 'Activity (DDD)', [type.UMLActivityDiagram]);
 
         Toolbox.addItem(TX_STEP,          TXG_ACTIVITY_DDD, 'UMLStep',        'icon-UMLStep',           'rect');
         Toolbox.addItem(TX_EXCEPTION_FLOW,     TXG_ACTIVITY_DDD, 'UMLExceptionFlow',   'icon-UMLExceptionFlow',          'line');
+
+        Toolbox.addItem(TX_INFORMATION,     TXG_ACTIVITY_DDD, 'Information',   'icon-UMLRequirement',          'rect');
 
         // Event Handling
         $(Toolbox).on('elementCreated', function (event, id, editor, x1, y1, x2, y2) {
@@ -89,6 +96,11 @@ define(function (require, exports, module) {
                     options.y1 = tailView.top;
                     view = Factory.createModelAndView("UMLExceptionFlow", tailModel, diagram, options);
                     view.model.stereotype = "Exception";
+                    break;
+                case TX_INFORMATION:
+                    if ((options.x2 - options.x1) < 5) { options.x2 = options.x1 + 70; }
+                    if ((options.y2 - options.y1) < 5) { options.y2 = options.y1 + 40; }
+                    view = Factory.createModelAndView("UMLInformation", parent, diagram, options);
                     break;
                 }
 

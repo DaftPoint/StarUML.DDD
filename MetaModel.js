@@ -99,6 +99,10 @@ define(function (require, exports, module) {
             "UMLExceptionFlowView": {
                 "kind": "class",
                 "super": "UMLControlFlowView"
+            },
+            "UMLInformationView": {
+            "kind": "class",
+                "super": "UMLNoteView"
             }/*,,
             "UMLClassDiagram": {
                 "kind": "class",
