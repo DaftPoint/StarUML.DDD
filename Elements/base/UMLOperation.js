@@ -5,20 +5,21 @@ define(function (require, exports, module) {
     app.getModule("engine/Factory");
     app.getModule("diagrams/DiagramManager");
 
-    var originalDrawAttribute = type.UMLAttributeView.prototype.drawObject;
+    var originalDrawOperation = type.UMLOperationView.prototype.drawObject;
 
-    type.UMLAttributeView.prototype.documentationInfoIconCreated = false;
+    type.UMLOperationView.prototype.documentationInfoIconCreated = false;
 
-    type.UMLAttributeView.prototype.drawObject = function(canvas) {
-        originalDrawAttribute.apply(this, canvas);
-        var size = 16;
-        if(this.model.documentation != null && this.model.documentation != "" && this.documentationInfoIconCreated == false) {
+    type.UMLOperationView.prototype.drawObject = function(canvas) {
+        originalDrawOperation.apply(this, canvas);
+        var zoomFactor = canvas.zoomFactor.numer;
+        var size = 16 * zoomFactor;
+        if(this.model.documentation != null && this.model.documentation != "") {
             this.documentationInfoIconCreated = true;
             var options = {
-                x1        : this.left,
-                y1        : this.top,
-                x2        : this.left + 16,
-                y2        : this.top + 16
+                x1        : (this.left * zoomFactor),
+                y1        : (this.top * zoomFactor),
+                x2        : (this.left * zoomFactor) + size,
+                y2        : (this.top * zoomFactor) + size
             };
             this.documentationInfoIcon = new type.UMLRequirementView();
             this.documentationInfoIcon.defaultHeight = size;
@@ -35,10 +36,9 @@ define(function (require, exports, module) {
             this.documentationInfoIcon = null;
             this.documentationInfoIconCreated = false;
         } else if(this.documentationInfoIcon != null && this.model.documentation != "") {
-            this.documentationInfoIcon.left = this._parent._parent.left - (this.documentationInfoIcon.width/2);
-            var pullTop = Math.abs((this.height - size)) / 2;
-            var pullTopCeil = Math.ceil(pullTop);
-            this.documentationInfoIcon.top = this.top - JSON.parse(JSON.stringify(pullTopCeil));
+            this.documentationInfoIcon.left = (this._parent._parent.left*zoomFactor) - (this.documentationInfoIcon.width*zoomFactor/2);
+            var pullTop = Math.abs((this.height*zoomFactor - size)) / 2;
+            this.documentationInfoIcon.top = (this.top*zoomFactor) - JSON.parse(JSON.stringify(pullTop));
             this.documentationInfoIcon.drawObject(canvas);
         }
     };

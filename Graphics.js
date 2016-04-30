@@ -11,24 +11,29 @@ define(function (require, exports, module) {
             image.src = base64;
         }
         var pixel = (this.font.size * 96 / 72) + 5;
-        var sizeWidth = (this.width);
-        var sizeHeight= (this.height - pixel);
-        canvas.context.drawImage(image, this.left, this.top, sizeWidth, sizeHeight);
+        var zoomFactor = canvas.zoomFactor.numer;
+        var sizeWidth = (this.width * zoomFactor);
+        var sizeHeight= (this.height * zoomFactor - pixel * zoomFactor);
+        canvas.context.drawImage(image, this.left * zoomFactor, this.top * zoomFactor, sizeWidth, sizeHeight);
     }
 
     function drawIcon(imageName, canvas, base64) {
         var image = new Image();
         image.src = base64;
-        var sizeWidth = 16;
-        var sizeHeight= 16;
-        canvas.context.drawImage(image, this.left + this.width - 16 - 5, this.top + 5, sizeWidth, sizeHeight);
+        var zoomFactor = canvas.zoomFactor.numer;
+        var sizeWidth = 16 * zoomFactor;
+        var sizeHeight= 16 * zoomFactor;
+        var left = (this.left * zoomFactor) + (this.width * zoomFactor) - sizeWidth - (5 * zoomFactor);
+        var top = (this.top * zoomFactor) + (5 * zoomFactor);
+        canvas.context.drawImage(image, left, top, sizeWidth, sizeHeight);
     }
 
     function drawErrorIcon(imageName, canvas, base64) {
         var image = new Image();
         image.src = base64;
-        var sizeWidth = 16;
-        var sizeHeight= 16;
+        var zoomFactor = canvas.zoomFactor.numer;
+        var sizeWidth = 16 * zoomFactor;
+        var sizeHeight= 16 * zoomFactor;
 
         var x = this.errorIconLeft;
         var y = this.errorIconTop;

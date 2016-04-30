@@ -43,13 +43,14 @@ define(function (require, exports, module) {
         if(this.iconName != null && (this.stereotypeDisplay == UML.SD_ICON || this.stereotypeDisplay == UML.SD_ICON_LABEL)) {
         	Graphics.drawImage.call(this, this.iconName, canvas, this.base64Image);
         }
-        if(this.model.documentation != null && this.model.documentation != "" && this.documentationInfoIconCreated == false) {
+        if(this.model.documentation != null && this.model.documentation != "") {
             this.documentationInfoIconCreated = true;
+            var zoomFactor = canvas.zoomFactor.numer;
             var options = {
-                x1        : this.left - 16,
-                y1        : this.top - 12,
-                x2        : this.left + 16,
-                y2        : this.top + 12
+                x1        : (this.left * zoomFactor) - (16 * zoomFactor),
+                y1        : (this.top * zoomFactor) - (12 * zoomFactor),
+                x2        : (this.left * zoomFactor) + (16 * zoomFactor),
+                y2        : (this.top * zoomFactor) + (12 * zoomFactor)
             };
             this.documentationInfoIcon = new type.UMLRequirementView();
             this.documentationInfoIcon.size();
@@ -64,8 +65,14 @@ define(function (require, exports, module) {
             this.documentationInfoIcon = null;
             this.documentationInfoIconCreated = false;
         } else if(this.documentationInfoIcon != null && this.model.documentation != "") {
-            this.documentationInfoIcon.left = this.left - (this.documentationInfoIcon.width/2);
-            this.documentationInfoIcon.top = this.top - (this.documentationInfoIcon.height/2);
+            var left = this.left * zoomFactor;
+            var top = this.top * zoomFactor;
+            var width = this.documentationInfoIcon.width;
+            var height = this.documentationInfoIcon.height;
+            this.documentationInfoIcon.width = width * zoomFactor;
+            this.documentationInfoIcon.height = height * zoomFactor;
+            this.documentationInfoIcon.left = left - (width*zoomFactor/2);
+            this.documentationInfoIcon.top = top - (height*zoomFactor/2);
             this.documentationInfoIcon.drawObject(canvas);
         }
     };

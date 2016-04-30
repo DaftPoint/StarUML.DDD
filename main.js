@@ -16,7 +16,8 @@ define(function (require, exports, module) {
     require("Elements/activity/UMLException");
     require("Elements/UMLInformation");
     require("Elements/UMLInformation");
-    require("Elements/UMLAttribute");
+    require("Elements/base/UMLAttribute");
+    require("Elements/base/UMLOperation");
 
     app.getModule("file/FileUtils");
     
