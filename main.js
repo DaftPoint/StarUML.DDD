@@ -18,6 +18,7 @@ define(function (require, exports, module) {
     require("Elements/UMLInformation");
     require("Elements/base/UMLAttribute");
     require("Elements/base/UMLOperation");
+    require("Elements/UMLImage");
 
     app.getModule("file/FileUtils");
     
@@ -56,6 +57,7 @@ define(function (require, exports, module) {
         Factory.registerModelAndViewFn("UMLExceptionFlow",   Factory.defaultDirectedRelationshipFn, null );
 
         Factory.registerModelAndViewFn("UMLInformation",      Factory.defaultViewOnlyFn, { viewType: "UMLInformationView" });
+        Factory.registerModelAndViewFn("UMLImage",      Factory.defaultViewOnlyFn, { viewType: "UMLImageView" });
 
         //Factory.registerDiagramFn("UMLDomainDrivenClassDiagram",              structuralDiagramFn);
         //Factory.registerViewOfFn("UMLDomainDrivenClassDiagram",              viewForGeneralDiagramFn);

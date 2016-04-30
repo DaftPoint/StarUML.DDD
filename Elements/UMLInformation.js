@@ -5,6 +5,7 @@ define(function (require, exports, module) {
     var UML               = app.getModule("uml/UML");
     var Graphics          = require("Graphics");
 
+
     function UMLInformationView() {
         type.UMLNoteView.apply(this, arguments);
         this.fillColor  = PreferenceManager.get("uml.class.fillColor", "#ffffd8") || PreferenceManager.get("view.fillColor", "#ffffd8");

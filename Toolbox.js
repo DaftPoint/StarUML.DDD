@@ -6,6 +6,8 @@ define(function (require, exports, module) {
     var Factory     = app.getModule("engine/Factory");
     var Repository  = app.getModule("core/Repository");
     var Toast       = app.getModule("ui/Toast");
+    var FileSystem = app.getModule("filesystem/FileSystem");
+    var DiagramManager = app.getModule("diagrams/DiagramManager");
 
 	var TXG_CLASS_DDD      = 'txg-class_ddd';
     var TXG_ACTIVITY_DDD      = 'txg-activity_ddd';
@@ -16,6 +18,7 @@ define(function (require, exports, module) {
         TX_VALUE_OBJECT    = 'tx-value-object',
         TX_MASKENFLUSS     = 'tx-maskenfluss',
         TX_REQUIREMENT     = 'tx-requirement',
+        TX_IMAGE     = 'tx-image',
 
         TX_STEP          = 'tx-step',
         TX_EXCEPTION_FLOW          = 'tx-exception-flow';
@@ -33,6 +36,7 @@ define(function (require, exports, module) {
         Toolbox.addItem(TX_VALUE_OBJECT,    TXG_CLASS_DDD, 'Value Object',  'icon-UMLValueObject',          'rect');
         Toolbox.addItem(TX_MASKENFLUSS,     TXG_CLASS_DDD, 'Maskenfluss',   'icon-UMLMaskenfluss',          'line');
         Toolbox.addItem(TX_REQUIREMENT,     TXG_CLASS_DDD, 'Requirement',   'icon-UMLRequirement',          'rect');
+        Toolbox.addItem(TX_IMAGE,     TXG_CLASS_DDD, 'Image',   'icon-UMLImage',          'rect');
 
         Toolbox.addItem(TX_INFORMATION,     TXG_CLASS_DDD, 'Information',   'icon-UMLRequirement',          'rect');
 
@@ -102,6 +106,26 @@ define(function (require, exports, module) {
                     if ((options.y2 - options.y1) < 5) { options.y2 = options.y1 + 40; }
                     view = Factory.createModelAndView("UMLInformation", parent, diagram, options);
                     break;
+                case TX_IMAGE:
+                    FileSystem.showOpenDialog(false, false, "Select an PNG-Image ...", null, ["png"], function (err, files) {
+                        if (!err) {
+                            if (files.length > 0) {
+                                // User selected one or more files
+                                toDataUrl(files, function(dataUrl) {
+                                    if ((options.x2 - options.x1) < 5) { options.x2 = options.x1 + 70; }
+                                    if ((options.y2 - options.y1) < 5) { options.y2 = options.y1 + 40; }
+                                    view = Factory.createModelAndView("UMLImage", parent, diagram, options);
+                                    Repository.get(view._id).setBase64Image(dataUrl);
+                                    DiagramManager.repaint()
+                                })
+                            } else {
+                                // User canceled
+                            }
+                        } else {
+                            // Handle error
+                        }
+                    });
+                    break;
                 }
 
                 // Open QuickEdit for the created view.
@@ -126,6 +150,24 @@ define(function (require, exports, module) {
                 }
             }
         });
+    }
+
+
+    function toDataUrl(url, callback, outputFormat){
+        var img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.src = url;
+        img.onload = function(){
+            var canvas = document.createElement('CANVAS');
+            var ctx = canvas.getContext('2d');
+            var dataURL;
+            canvas.height = this.height;
+            canvas.width = this.width;
+            ctx.drawImage(this, 0, 0);
+            dataURL = canvas.toDataURL(outputFormat);
+            callback(dataURL);
+            canvas = null;
+        };
     }
     
     //#

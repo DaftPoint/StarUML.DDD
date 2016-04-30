@@ -103,6 +103,13 @@ define(function (require, exports, module) {
             "UMLInformationView": {
             "kind": "class",
                 "super": "UMLNoteView"
+            },
+            "UMLImageView": {
+                "kind": "class",
+                "super": "UMLNoteView",
+                "attributes": [
+                    { "name": "base64Image", "kind": "prim", "type": "String", "visible": true }
+                ]
             }/*,,
             "UMLClassDiagram": {
                 "kind": "class",
