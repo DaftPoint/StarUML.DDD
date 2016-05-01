@@ -81,7 +81,7 @@ define(function (require, exports, module) {
         this.drawIcon(canvas, Graphics.getImage(this.iconName));
     };*/
 
-    UMLDomainDrivenElementView.prototype.update = function(canvas) {
+    /*UMLDomainDrivenElementView.prototype.update = function(canvas) {
         switch (this.stereotypeDisplay) {
             case UML.SD_NONE:
                 this.suppressAttributes = false;
@@ -105,7 +105,7 @@ define(function (require, exports, module) {
                 break;
             }
     	type.UMLClassView.prototype.update.call(this, canvas);
-    };
+    };*/
 
     //# Backbone
     type.UMLDomainDrivenElement            = UMLDomainDrivenElement;
