@@ -13,6 +13,7 @@ define(function (require, exports, module) {
     require("Elements/class/UMLValueObject");
     require("Elements/UMLRequirement");
     require("Elements/activity/UMLStep");
+    require("Elements/activity/UMLIteration");
     require("Elements/activity/UMLException");
     require("Elements/UMLInformation");
     require("Elements/base/UMLAttribute");
@@ -53,6 +54,8 @@ define(function (require, exports, module) {
 
         Factory.registerModelFn("UMLStep", Factory.defaultModelFn);
         Factory.registerModelAndViewFn("UMLStep",   Factory.defaultModelAndViewFn);
+        Factory.registerModelFn("UMLIteration", Factory.defaultModelFn);
+        Factory.registerModelAndViewFn("UMLIteration",   Factory.defaultModelAndViewFn);
         Factory.registerModelAndViewFn("UMLExceptionFlow",   Factory.defaultDirectedRelationshipFn, null );
 
         Factory.registerModelAndViewFn("UMLInformation",      Factory.defaultViewOnlyFn, { viewType: "UMLInformationView" });

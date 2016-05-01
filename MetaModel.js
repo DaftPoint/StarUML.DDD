@@ -100,6 +100,19 @@ define(function (require, exports, module) {
                 "kind": "class",
                 "super": "UMLControlFlowView"
             },
+            "UMLIteration": {
+                "kind": "class",
+                "super": "UMLStructuredActivityNode",
+                "attributes": [
+                    //{ "name": "isActive",   "kind": "prim", "type": "Boolean", "visible": true, "default": false }
+                ],
+                "view": "UMLIterationView",
+                "ordering": 9007
+            },
+            "UMLIterationView": {
+                "kind": "class",
+                "super": "UMLStructuredActivityNodeView"
+            },
             "UMLInformationView": {
             "kind": "class",
                 "super": "UMLNoteView"

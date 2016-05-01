@@ -21,7 +21,8 @@ define(function (require, exports, module) {
         TX_IMAGE     = 'tx-image',
 
         TX_STEP          = 'tx-step',
-        TX_EXCEPTION_FLOW          = 'tx-exception-flow';
+        TX_EXCEPTION_FLOW          = 'tx-exception-flow',
+        TX_ITERATION          = 'tx-iteration';
 
 
         var TX_INFORMATION     = 'tx-information';
@@ -45,6 +46,7 @@ define(function (require, exports, module) {
 
         Toolbox.addItem(TX_STEP,          TXG_ACTIVITY_DDD, 'UMLStep',        'icon-UMLStep',           'rect');
         Toolbox.addItem(TX_EXCEPTION_FLOW,     TXG_ACTIVITY_DDD, 'UMLExceptionFlow',   'icon-UMLExceptionFlow',          'line');
+        Toolbox.addItem(TX_ITERATION,     TXG_ACTIVITY_DDD, 'UMLIteration',   'icon-UMLIteration',          'rect');
 
         Toolbox.addItem(TX_INFORMATION,     TXG_ACTIVITY_DDD, 'Information',   'icon-UMLRequirement',          'rect');
 
@@ -95,6 +97,9 @@ define(function (require, exports, module) {
                     break;
                 case TX_STEP:
                     view = Factory.createModelAndView("UMLStep", parent, diagram, options);
+                    break;
+                case TX_ITERATION:
+                    view = Factory.createModelAndView("UMLIteration", parent, diagram, options);
                     break;
                 case TX_EXCEPTION_FLOW:
                     options.y1 = tailView.top;
