@@ -4,7 +4,7 @@ define(function (require, exports, module) {
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // SEE http://one-day-from.blogspot.de/2013/09/svg-in-html-5-canvas-tainted-canvas.html
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	
+
     function drawImage(imageName, canvas, base64) {
         var image = new Image();
         if(base64 !== null || base64 !== undefined) {
@@ -12,9 +12,13 @@ define(function (require, exports, module) {
         }
         var pixel = (this.font.size * 96 / 72) + 5;
         var zoomFactor = canvas.zoomFactor.numer;
-        var sizeWidth = (this.width * zoomFactor);
-        var sizeHeight= (this.height * zoomFactor - pixel * zoomFactor);
-        canvas.context.drawImage(image, this.left * zoomFactor, this.top * zoomFactor, sizeWidth, sizeHeight);
+        //var sizeWidth = (this.width * zoomFactor);
+        var size = (this.height * zoomFactor - pixel * zoomFactor);
+        //var sizeHeight= (this.height * zoomFactor - pixel * zoomFactor);
+        //var sizeHeight = (this.height * zoomFactor - pixel * zoomFactor);
+        //var sizeWidth = size;
+        var leftPosition = (this.left * zoomFactor) + (this.width / 2) - (size / 2);
+        canvas.context.drawImage(image, leftPosition, this.top * zoomFactor, size, size);//sizeWidth, sizeHeight);
     }
 
     function drawIcon(imageName, canvas, base64) {
