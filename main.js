@@ -6,19 +6,18 @@ define(function (require, exports, module) {
     var Helper                  = app.getModule("utils/Helper");
     var Extensionutils          = app.getModule("utils/ExtensionUtils");
 
-    require("Elements/UMLDataEntity");
-    require("Elements/UMLView");
-    require("Elements/UMLService");
-    require("Elements/UMLMaskenfluss");
-    require("Elements/UMLValueObject");
+    require("Elements/class/UMLDataEntity");
+    require("Elements/class/UMLView");
+    require("Elements/class/UMLService");
+    require("Elements/class/UMLMaskenfluss");
+    require("Elements/class/UMLValueObject");
     require("Elements/UMLRequirement");
     require("Elements/activity/UMLStep");
     require("Elements/activity/UMLException");
     require("Elements/UMLInformation");
-    require("Elements/UMLInformation");
     require("Elements/base/UMLAttribute");
     require("Elements/base/UMLOperation");
-    require("Elements/UMLImage");
+    require("Elements/class/UMLImage");
 
     app.getModule("file/FileUtils");
     

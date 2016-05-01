@@ -34,9 +34,9 @@ define(function (require, exports, module) {
         Toolbox.addItem(TX_VIEW,            TXG_CLASS_DDD, 'View',          'icon-UMLView',                 'rect');
         Toolbox.addItem(TX_SERVICE,         TXG_CLASS_DDD, 'Service',       'icon-UMLService',              'rect');
         Toolbox.addItem(TX_VALUE_OBJECT,    TXG_CLASS_DDD, 'Value Object',  'icon-UMLValueObject',          'rect');
-        Toolbox.addItem(TX_MASKENFLUSS,     TXG_CLASS_DDD, 'Maskenfluss',   'icon-UMLMaskenfluss',          'line');
+        Toolbox.addItem(TX_MASKENFLUSS,     TXG_CLASS_DDD, 'View-Flow',     'icon-UMLMaskenfluss',          'line');
         Toolbox.addItem(TX_REQUIREMENT,     TXG_CLASS_DDD, 'Requirement',   'icon-UMLRequirement',          'rect');
-        Toolbox.addItem(TX_IMAGE,     TXG_CLASS_DDD, 'Image',   'icon-UMLImage',          'rect');
+        Toolbox.addItem(TX_IMAGE,           TXG_CLASS_DDD, 'Image',         'icon-UMLImageView',            'rect');
 
         Toolbox.addItem(TX_INFORMATION,     TXG_CLASS_DDD, 'Information',   'icon-UMLRequirement',          'rect');
 
@@ -86,7 +86,7 @@ define(function (require, exports, module) {
                 case TX_MASKENFLUSS:
                     options.y1 = tailView.top;
                     view = Factory.createModelAndView("UMLMaskenfluss", tailModel, diagram, options);
-                    view.model.stereotype = "Maskenfluss"; 
+                    view.model.stereotype = "ViewFlow";
                     break;
                 case TX_REQUIREMENT:
                     if ((options.x2 - options.x1) < 5) { options.x2 = options.x1 + 70; }
@@ -107,7 +107,7 @@ define(function (require, exports, module) {
                     view = Factory.createModelAndView("UMLInformation", parent, diagram, options);
                     break;
                 case TX_IMAGE:
-                    FileSystem.showOpenDialog(false, false, "Select an PNG-Image ...", null, ["png"], function (err, files) {
+                    FileSystem.showOpenDialog(false, false, "Select an Image ...", null, ["png"], function (err, files) {
                         if (!err) {
                             if (files.length > 0) {
                                 // User selected one or more files

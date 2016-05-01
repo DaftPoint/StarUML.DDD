@@ -2,7 +2,7 @@ define(function (require, exports, module) {
 	"use strict";
 
     var PreferenceManager = app.getModule("core/PreferenceManager");
-    require("Elements/UMLDomainDrivenElement");
+    require("Elements/class/UMLDomainDrivenElement");
 	
 	function UMLView() {
         type.UMLDomainDrivenElement.apply(this, arguments);
